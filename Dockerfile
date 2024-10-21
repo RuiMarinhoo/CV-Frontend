@@ -3,7 +3,7 @@ FROM node:20-alpine as build
 WORKDIR /app
 COPY . .
 
-RUN npm install --legacy-peer-deps
+RUN npm install
 RUN npm run ng build
 
 FROM nginx:latest
