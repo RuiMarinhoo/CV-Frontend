@@ -1,19 +1,13 @@
 FROM node:20-alpine as build
 
 WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-RUN npm install -g @angular/cli
-
 COPY . .
 
-RUN ng build --configuration=production
+RUN npm install --legacy-peer-deps
+RUN npm run ng build
 
 FROM nginx:latest
 
-COPY --from=build app/dist/aftas-angular /usr/share/nginx/html
+COPY --from=build app/dist/cv-front-end /usr/share/nginx/html
 
 EXPOSE 4200
