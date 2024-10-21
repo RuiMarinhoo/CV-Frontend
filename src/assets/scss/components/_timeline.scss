@@ -1,0 +1,99 @@
+.timeline {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  //@media(max-width: 767px) {
+  //  max-width: 98%;
+  //  padding: 25px;
+  //}
+
+  .timeline-item {
+    position: relative;
+    padding-left: 3rem;
+    border-left: 1px solid #d9dee3;
+
+
+    .timeline-point-wrapper {
+      position: absolute;
+      top: -0.5rem;
+      left: -0.43rem;
+      z-index: 2;
+      display: block;
+      height: 2.25rem;
+      width: 2.25rem;
+      background-color: #fff;
+
+      .timeline-point{
+        position: absolute;
+        left: 0;
+        top: .75rem;
+        z-index: 3;
+        display: block;
+        height: .75rem;
+        width: .75rem;
+        border-radius: 50%;
+        background-color: #696cff;
+
+        &.timeline-point-primary{
+          background-color: #696cff !important;
+          box-shadow: 0 0 0 .1875rem rgba(105, 108, 255, .16);
+        }
+        &.timeline-point-warning {
+          background-color: #ffab00 !important;
+          box-shadow: 0 0 0 .1875rem rgba(255, 171, 0, .16);
+        }
+        &.timeline-point-info {
+          background-color: #03c3ec !important;
+          box-shadow: 0 0 0 .1875rem rgba(3, 195, 236, .16);
+        }
+        &.timeline-point-danger {
+          background-color: #fd3e1e !important;
+          box-shadow: 0 0 0 .1875rem rgba(253, 62, 30, .16);
+        }
+      }
+    }
+
+    .timeline-event {
+      position: relative;
+      top: -1.2rem;
+      width: 100%;
+      min-height: 4rem;
+      background-color: #fff;
+      border-radius: .375rem;
+      padding: 1.25rem 1.5rem .75rem 0;
+
+      //@media(max-width: 767px) {
+      //  padding-top: 30px;
+      //}
+
+      .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+
+        .text-muted{
+          color: $text-muted!important;
+        }
+
+        @media (max-width: 575.98px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+
+  .timeline-end-indicator {
+    position: absolute;
+    bottom: -2.2rem;
+    left: -0.65rem;
+
+    i {
+      font-size: 1.5rem;
+      color: #d9dee3;
+    }
+  }
+}

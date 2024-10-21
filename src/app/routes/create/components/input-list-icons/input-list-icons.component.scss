@@ -1,0 +1,15 @@
+.item-in-component {
+  .dropdown-menu {
+    max-height: 200px;
+    overflow: auto;
+
+    &.show {
+      display: flex;
+    }
+  }
+  .dropdown-item {
+    display: flex;
+    width: auto!important;
+    padding: .5rem!important;
+  }
+}

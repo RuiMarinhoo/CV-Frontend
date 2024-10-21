@@ -1,0 +1,15 @@
+.form-switch .form-check-input:checked {
+   background-color: #b2991a!important;
+   border-color: #b2991a;
+}
+
+input.budget-time::-webkit-outer-spin-button,
+input.budget-time::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number].budget-time {
+  -moz-appearance: textfield;
+}

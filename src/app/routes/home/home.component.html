@@ -1,0 +1,60 @@
+
+<div class="cv-home">
+
+  <div class="container cvImg">
+    <div class="row">
+      <div class="col-12 col-lg-6 order-lg-12">
+        <div class="person">
+          <h2 class="text-dark">Create your curriculum vitae</h2>
+          <img src="assets/img/elements/person.gif">
+        </div>
+        <div class="row iconsCode" *ngIf="icons">
+          <div class="col-2 offset-2">
+            <img src="assets/img/elements/angular.png">
+          </div>
+          <div class="col-2">
+            <img src="assets/img/elements/bootstrap.png">
+          </div>
+          <div class="col-2">
+            <img src="assets/img/elements/node.png">
+          </div>
+          <div class="col-2">
+            <img src="assets/img/elements/puppeteer.png">
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="cvContainer">
+          <div class="card">
+            <div class="card-body">
+              <img src="assets/img/elements/cvP.gif">
+            </div>
+          </div>
+        </div>
+        <div class="btnCreate">
+          <div class="btn btn-1" (click)="goTo('/create')">
+            Let's beginning!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row iconsCode" *ngIf="!icons">
+      <div class="col-2 offset-2">
+        <img src="assets/img/elements/angular.png">
+      </div>
+      <div class="col-2">
+        <img src="assets/img/elements/bootstrap.png">
+      </div>
+      <div class="col-2">
+        <img src="assets/img/elements/node.png">
+      </div>
+      <div class="col-2">
+        <img src="assets/img/elements/puppeteer.png">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+

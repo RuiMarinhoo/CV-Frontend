@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CV-Frontend": {
+    "CVFrontEnd": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/cv-frontend",
+            "outputPath": "dist/cv-front-end",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -24,12 +24,15 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -59,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "CV-Frontend:build:production"
+              "buildTarget": "CVFrontEnd:build:production"
             },
             "development": {
-              "buildTarget": "CV-Frontend:build:development"
+              "buildTarget": "CVFrontEnd:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,5 +95,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "7adc17a2-9d88-4aeb-9153-9764ddd8fb0c"
   }
 }

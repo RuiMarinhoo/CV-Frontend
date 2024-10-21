@@ -1,0 +1,23 @@
+<div class="row">
+  @for (room of rooms; track room.id; let  i = $index) {
+    <div class="col-lg-6 col-md-6 col-6" [class.mb-4]="i<2" role="button" (click)="changeRoom(room.id)">
+      <div class="card h-100">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-lg-8">
+              <div>
+                <h5 class="card-title m-0 me-2">{{room.name}}</h5>
+                <small class="text-color">{{room.temperature}}ºC</small>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="avatar avatar-flex xs" style="float: right">
+                <span class="avatar-initial rounded-50" [ngClass]="room.id === selected_room ? 'bg-label-warning' : 'bg-label-primary'"><i class="{{room.icon}}"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

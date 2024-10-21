@@ -1,0 +1,101 @@
+.sidebar-folded {
+  .sidebar {
+    .sidebar-header {
+      width: $sidebar-folded-width;
+      .sidebar-brand {
+        display: none;
+      }
+    }
+  }
+  .page-wrapper {
+    width: calc(100% - #{$sidebar-folded-width});
+    margin-left: $sidebar-folded-width;
+    -webkit-transition: width .2s ease .2s, margin .2s ease-out .2s;
+    transition: width .2s ease .2s, margin .2s ease-out .2s;
+    .navbar {
+      width: calc(100% - #{$navbar-folded-width});
+      left: $sidebar-folded-width;
+      right: 0;
+      transition: width .1s ease .2s, left .1s ease .2s;
+    }
+  }
+  &:not(.open-sidebar-folded) {
+    .sidebar {
+      width: $sidebar-folded-width;
+      -webkit-transition: width .2s ease .2s, margin .2s ease-out .2s;
+      transition: width .2s ease .2s, margin .2s ease-out .2s;
+      .sidebar-header {
+        width: $sidebar-folded-width;
+        -webkit-transition: width .2s ease .2s, margin .2s ease-out .2s;
+        transition: width .2s ease .2s, margin .2s ease-out .2s;
+        .sidebar-brand {
+          opacity: 0;
+          visibility: hidden;
+          width: 0;
+        }
+      }
+      .sidebar-body {
+        .sidebar-nav {
+          .nav-item {
+            .nav-link {
+              &::before {
+                width: 60px;
+              }
+              .link-title,
+              .link-arrow {
+                visibility: hidden;
+                opacity: 0;
+              }
+            }
+            &.nav-category {
+              visibility: hidden;
+              -webkit-transition: visibility .1s ease;
+              transition: visibility .1s ease;
+              &::before {
+                content: '';
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: $text-muted;
+                position: absolute;
+                top: 5px;
+                left: 6px;
+                visibility: visible;
+                -webkit-transition: visibility .1s ease .2s;
+                transition: visibility .1s ease .2s;
+              }
+            }
+          }
+          &.sub-menu {
+            display: none;
+          }
+        }
+        footer {
+          visibility: hidden;
+          opacity: 0;
+          transition: all 0s ease-in-out
+        }
+      }
+    }
+  }
+}
+
+.sidebar-open, .settings-open {
+  @media(max-width: 991px) {
+    .main-wrapper {
+      &::before {
+        content: '';
+        width: 100vw;
+        background: rgba(0, 0, 0, .3);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 99;
+        -webkit-transition: all 3s ease;
+        transition: all 3s ease;
+        z-index: 980;
+      }
+    }
+  }
+}

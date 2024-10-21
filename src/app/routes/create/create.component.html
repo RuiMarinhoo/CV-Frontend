@@ -1,0 +1,121 @@
+<div id="createCV">
+
+  <div class="container" *ngIf="stateCreation === 0">
+    <div class="row h-100">
+      <div class="col-12">
+        <div class="d-flex flex-column justify-content-center h-100 text-center">
+          <p style="font-size: 14pt">Choose a template base</p>
+          <drag-scroll [snap-disabled]="true" [style]="{height: imgHlayoutsCont + 'px'}">
+            <img [ngClass]="layoutcv.type === 'f1' ? 'activeImg' : ''"
+                 [style]="{width: imgWlayouts + 'px', height: imgHlayouts + 'px'}" drag-scroll-item
+                 src="assets/img/elements/f1.jpg" (click)="changeTemplate('f1')"/>
+            <img [ngClass]="layoutcv.type  === 'f2' ? 'activeImg' : ''"
+                 [style]="{width: imgWlayouts + 'px', height: imgHlayouts + 'px'}" drag-scroll-item
+                 src="assets/img/elements/f2.jpg" (click)="changeTemplate('f2')"/>
+          </drag-scroll>
+          <div class="btnCreate">
+            <div class="btn btn-2" *ngIf="layoutcv.type" (click)="selectTemplate()">
+              Ready to edit
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container" *ngIf="stateCreation === 1">
+    <div class="row formCV">
+      <div class="col-12 col-lg-7 colH d-flex flex-column h-100">
+
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <div class="d-flex justify-content-between nav-link w-100" [class.active]="tab === 0" (click)="tab = 0">
+              <span>Left Column</span>
+              <div class="d-flex flex-column justify-content-center" (click)="openModalComponents(0); $event.stopPropagation()">
+                <i class="ri-lg ri-add-circle-fill text-success"></i>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="d-flex justify-content-between nav-link w-100" [class.active]="tab === 1" (click)="tab = 1">
+              <span>Right Column</span>
+              <div class="d-flex flex-column justify-content-center" (click)="openModalComponents(1); $event.stopPropagation()">
+                <i class="ri-lg ri-add-circle-fill text-success"></i>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="tab-content p-0" id="tab-content">
+          <ng-container *ngFor="let columns of layoutcv.columns">
+            <div class="tab-pane" [class.active]="columns.tab === tab">
+              <div
+                cdkDropList
+                [cdkDropListData]="columns.components"
+                class="example-list rounded-0"
+                (cdkDropListDropped)="drop($event)">
+                @for (component of columns.components; track component; let index = $index) {
+                  <div class="example-box" cdkDrag>
+                    <div class="d-flex example-handle" cdkDragHandle style="position: absolute; top: 4px">
+                      <i class="ri-2x ri-drag-move-2-fill"></i>
+                    </div>
+                    <div class="d-flex justify-content-between" (click)="component.isCollapsed = !component.isCollapsed">
+                      <h3 class="text-primary font-weight-bold text-capitalize" style="margin-left: 35px">
+                        {{component.type.replace('-', ' ')}}
+                      </h3>
+                      <div class="d-flex" role="button" style="height: 32px; align-items: center;" (click)="removeComponent(index); $event.stopPropagation()">
+                        <i class="ri-2x ri-close-circle-fill text-danger"></i>
+                      </div>
+                    </div>
+                    <div #collapse="ngbCollapse" [(ngbCollapse)]="component.isCollapsed">
+                      <ng-container [ngSwitch]="component.type">
+                        <app-input-photo *ngSwitchCase="'photo'"
+                                         (itemEvent)="addValue(component, $event)"></app-input-photo>
+                        <app-input-text *ngSwitchCase="'text'"
+                                        (itemEvent)="addValue(component, $event)"></app-input-text>
+                        <app-input-simple-text *ngSwitchCase="'simple-text'"
+                                        (itemEvent)="addValue(component, $event)"></app-input-simple-text>
+                        <app-input-list-skills *ngSwitchCase="'list-skills'"
+                                               (itemEvent)="addValue(component, $event)"></app-input-list-skills>
+                        <app-input-list-topics *ngSwitchCase="'list-topics'"
+                                               (itemEvent)="addValue(component, $event)"></app-input-list-topics>
+                        <app-input-list-icons *ngSwitchCase="'list-icons'"
+                                              (itemEvent)="addValue(component, $event)"></app-input-list-icons>
+                      </ng-container>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="d-none d-lg-block col-lg-5 showCV">
+        <div class="d-flex flex-column">
+          <div style="position: relative">
+            @if (loading){
+              <div class="lds-ring" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div></div><div></div><div></div><div></div></div>
+            }
+            @if (htmlSrc){
+              <img [src]="htmlSrc"/>
+            } @else {
+              <img src="assets/img/elements/cv_empty.jpg"/>
+            }
+          </div>
+          <div class="d-flex mt-4">
+            <div class="btn btn-1 me-2" (click)="getTemplateRender()">
+              <i class="ri-lg ri-loop-right-line"></i>
+            </div>
+            <div class="btn btn-1 me-4" (click)="openModalCV()">
+              <i class="ri-lg ri-search-line"></i>
+            </div>
+            <div class="btn btn-1 w-100" (click)="getPDF()">
+              GET CV
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

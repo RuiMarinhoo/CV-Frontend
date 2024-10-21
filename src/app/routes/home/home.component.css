@@ -1,0 +1,115 @@
+
+.cv-home{
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  height: 100%;
+}
+
+img{
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+
+
+.cvContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center!important;
+}
+
+.cvImg .card{
+  width: 70%;
+  border: 0;
+  background-color: aliceblue;
+  -webkit-box-shadow: 8px 8px 30px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 8px 8px 30px 0px rgba(0,0,0,0.3);
+  box-shadow: 8px 8px 30px 0px rgba(0,0,0,0.3);
+}
+
+.cvImg .card .card-body {
+  padding: 0.5rem;
+}
+
+.cvImg .card img{
+  width: 100%;
+}
+
+.cvImg .person{
+  text-align: center;
+}
+.cvImg .person img, .cvImg .iconsCode img{
+  width: 100%;
+}
+
+.cvImg .iconsCode{
+  margin-top: -70px;
+}
+
+.btnCreate{
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  flex: 0 0 50%;
+  margin: 10px;
+  padding: 10px 19px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 13pt;
+  color: white;
+  transition: 0.5s;
+  background-size: 200% auto;
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.btn-1 {
+  background-image: linear-gradient(to right, #8ccede 0%, #6d8cc3 51%, #8ccede 100%);
+  margin-top: 50px;
+}
+
+
+
+
+@media (max-width: 992px) {
+  #home{
+    /*overflow: auto;*/
+    /*background-size: 100% auto;*/
+  }
+
+  .cvImg .iconsCode{
+    margin-top: 50px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  #home{
+    /*background-image: url('../../assets/img/bgCVM.jpg');*/
+    /*background-size: 100% auto;*/
+  }
+
+  .cvContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center!important;
+  }
+
+  .cvImg .card{
+    width: 100%;
+  }
+
+}
+

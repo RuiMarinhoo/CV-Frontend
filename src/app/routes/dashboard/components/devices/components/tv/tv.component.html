@@ -1,0 +1,156 @@
+<div class="card">
+  <div class="card-body card-tv-media">
+    <div class="card-tv d-flex">
+      <div class="card-tv-img me-4">
+        <div class="rounded-2 text-center mb-3" style="position: absolute; top: 0;">
+<!--          <img class="img-fluid" src="/assets/img/backgrounds/lol.jpg" alt="tutor image 1">-->
+          <img class="img-fluid" src="{{media.attributes.entity_picture}}" alt="mediaPic">
+        </div>
+      </div>
+      <div class="w-100">
+        <div class="d-flex align-items-center justify-content-between mb-2 pb-1">
+          <div class="d-flex align-items-center">
+            <div class="avatar me-2">
+              <span class="avatar-initial rounded bg-label-info"><i class="ri-tv-line"></i></span>
+            </div>
+            <h4 class="ms-1 mb-0">TV Sala</h4>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="avatar">
+              <span class="avatar-initial rounded-50 bg-label-warning"><i class="ri-shut-down-line"></i></span>
+            </div>
+          </div>
+        </div>
+        <p class="mb-3">{{media.attributes.app_name}}: <b class="card-media-text-lg">{{media.attributes.media_title}}</b></p>
+        <p class="card-media-text-sm"><b>{{media.attributes.media_title}}</b></p>
+        <div class="card-controls-tv-lg align-items-center">
+          <div class="avatar xs flex-shrink-0 me-2">
+            <span class="avatar-initial rounded bg-label-secondary">
+              <i class="ri-volume-mute-line"></i>
+            </span>
+          </div>
+          <div class="avatar xs flex-shrink-0 me-2">
+            <span class="avatar-initial rounded bg-label-secondary" [ngClass]="tv.state === 'on' ? 'bg-label-warning' : 'bg-label-secondary'">
+              <i class="ri-volume-down-line"></i>
+            </span>
+          </div>
+          <input
+            type="range"
+            class="form-range me-2"
+            [value]="tv.volume"
+            [min]="0.0"
+            [max]="60"
+            [step]="1"
+            id="customRange1">
+          <div class="avatar xs flex-shrink-0">
+            <span class="avatar-initial rounded bg-label-secondary">
+              <i class="ri-volume-up-line"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-controls-tv-media-sm mt-3">
+      <div class="card-controls-tv-sm align-items-center">
+        <div class="avatar xs flex-shrink-0 me-2">
+            <span class="avatar-initial rounded bg-label-secondary">
+              <i class="ri-volume-mute-line"></i>
+            </span>
+        </div>
+        <div class="avatar xs flex-shrink-0 me-2">
+            <span class="avatar-initial rounded bg-label-secondary">
+              <i class="ri-volume-down-line"></i>
+            </span>
+        </div>
+        <input
+          type="range"
+          class="form-range me-2"
+          [value]="0.15"
+          [min]="0.0"
+          [max]="1.0"
+          [step]="0.1"
+          id="customRange1">
+        <div class="avatar xs flex-shrink-0">
+            <span class="avatar-initial rounded bg-label-secondary">
+              <i class="ri-volume-up-line"></i>
+            </span>
+        </div>
+      </div>
+      <div class="card-controls-media-sm w-100 mt-3">
+        <div class="d-flex align-items-center">
+          <input
+            type="range"
+            class="form-range me-2"
+            [value]="0.15"
+            [min]="0.0"
+            [max]="1.0"
+            [step]="0.1"
+            id="customRange2">
+          <span class="card-text-time text-bg-warning rounded">-22:12</span>
+        </div>
+        <div class="d-flex mt-3">
+          <div class="avatar flex-shrink-0 me-3">
+            <span class="avatar-initial rounded" [ngClass]="media.state === 'paused' ? 'bg-label-warning' : 'bg-label-secondary'">
+              <i class="ri-pause-line"></i>
+            </span>
+          </div>
+          <div class="avatar flex-shrink-0 me-3">
+            <span class="avatar-initial rounded" [ngClass]="media.state === 'playing' ? 'bg-label-warning' : 'bg-label-secondary'">
+              <i class="ri-play-mini-line"></i>
+            </span>
+          </div>
+          <div class="avatar flex-shrink-0 me-3">
+            <span class="avatar-initial rounded bg-label-secondary">
+              <i class="ri-rewind-line"></i>
+            </span>
+          </div>
+          <div class="avatar flex-shrink-0 me-3">
+            <span class="avatar-initial rounded bg-label-secondary">
+              <i class="ri-speed-line"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-controls-media-lg mt-2">
+  <div class="card-controls-media-lg-space"></div>
+  <div class="card-controls-media-lg-actions w-100">
+    <div class="d-flex align-items-center">
+      <input
+        type="range"
+        class="form-range me-2"
+        [(ngModel)]="media.attributes.media_position"
+        [min]="0.0"
+        [max]="media.attributes.media_duration"
+        [step]="1"
+        id="customRange3">
+      <span class="card-text-time text-bg-warning rounded">-{{this.media.remaining_duration}}</span>
+    </div>
+    <div class="d-flex mt-3">
+      <div class="avatar flex-shrink-0 me-3">
+        <span class="avatar-initial rounded" [ngClass]="media.state === 'paused' ? 'bg-label-warning' : 'bg-label-secondary'">
+          <i class="ri-pause-line"></i>
+        </span>
+      </div>
+      <div class="avatar flex-shrink-0 me-3">
+        <span class="avatar-initial rounded" [ngClass]="media.state === 'playing' ? 'bg-label-warning' : 'bg-label-secondary'">
+          <i class="ri-play-mini-line"></i>
+        </span>
+      </div>
+      <div class="avatar flex-shrink-0 me-3">
+        <span class="avatar-initial rounded bg-label-secondary">
+          <i class="ri-rewind-line"></i>
+        </span>
+      </div>
+      <div class="avatar flex-shrink-0 me-3">
+        <span class="avatar-initial rounded bg-label-secondary">
+          <i class="ri-speed-line"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+

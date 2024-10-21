@@ -1,0 +1,20 @@
+<div class="row">
+  @for (device of devices; track device; let  i = $index) {
+    <div class="{{device.space.lg ? 'col-lg-' + device.space.lg : ''}} {{device.space.md ? 'col-md-' + device.space.md : ''}} {{device.space.sm ? 'col-' + device.space.sm : ''}} mb-4">
+      @switch (true) {
+        @case (device.entity_id.includes('ac')) {
+          <app-ac [device]="device"></app-ac>
+        }
+        @case (device.entity_id.includes('tv')) {
+          <app-tv [device]="device"></app-tv>
+        }
+        @case (device.entity_id.includes('luz')) {
+          <div>Blue</div>
+        }
+        @case (device.entity_id.includes('plug')) {
+          <div>Blue</div>
+        }
+      }
+    </div>
+  }
+</div>

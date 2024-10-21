@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'CV-Frontend' title`, () => {
+  it(`should have the 'CVFrontEnd' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('CV-Frontend');
+    expect(app.title).toEqual('CVFrontEnd');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, CV-Frontend');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, CVFrontEnd');
   });
 });
